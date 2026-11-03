@@ -1,4 +1,4 @@
-# Data Access in C#
+#### Data Access in C#
 
 | Approach | What it is | Best for | Trade-offs |
 |---|---|---|---|
@@ -7,7 +7,7 @@
 | **Entity Framework Core** | Full ORM (LINQ to SQL, migrations, change tracking) | Most business apps, rapid development | Overhead, can generate inefficient queries if misused |
 | **Stored procedures** (via any of the above) | Logic lives in the database | Legacy systems, DBA-controlled logic | Harder to version and test |
 
-## Quick examples
+#### Quick examples
 
 | Approach | Code |
 |---|---|
@@ -15,7 +15,7 @@
 | **Dapper** | `using var conn = new SqlConnection(cs);`<br>`var product = await conn.QueryFirstOrDefaultAsync<Product>("SELECT * FROM Products WHERE Id = @id", new { id = 1 });` |
 | **EF Core** | `var product = await db.Products.FirstOrDefaultAsync(p => p.Id == 1);` |
 
-## EF Core setup
+#### EF Core setup
 
 | Step | Code / command |
 |---|---|
@@ -25,7 +25,7 @@
 | Register (ASP.NET Core) | `builder.Services.AddDbContext<AppDbContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("Default")));` |
 | Create and apply migration | `dotnet ef migrations add Init`<br>`dotnet ef database update` |
 
-## Best practices
+#### Best practices
 
 | Practice | Why |
 |---|---|
@@ -36,7 +36,7 @@
 | Keep data access behind a repository or service layer | Easier testing and swapping |
 | Store connection strings in config or secrets, not code | Security |
 
-## Which to pick?
+#### Which to pick?
 
 | Situation | Choice |
 |---|---|
